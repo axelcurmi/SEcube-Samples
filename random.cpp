@@ -11,7 +11,7 @@ int main() {
     unique_ptr<L0> l0;
     uint16_t dataOutSize = 16;
     uint8_t dataOut[dataOutSize];
-    uint8_t i;
+    int i, status;
 
     l0 = make_unique<L0>();
 
@@ -22,13 +22,13 @@ int main() {
     printf("\n");
 
 	l0->L0Open();
-    l0->L0GenerateRandom(dataOutSize, dataOut, dataOutSize);
+    status = l0->L0GenerateRandom(dataOutSize, dataOut, dataOutSize);
 	l0->L0Close();
 
     for (i = 0; i < dataOutSize; i++) {
         printf("%02x ", dataOut[i]);
     }
-    printf("\n");
+    printf("\nStatus: %d\n", status);
 
     return 0;
 }
