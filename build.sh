@@ -16,6 +16,8 @@ g++ -O0 -g3 -c -o obj/L1.o SEcubeSources/L1/L1.cpp
 
 g++ -O3 -g3 -c -o obj/hello_world.o hello_world.cpp
 g++ -O3 -g3 -c -o obj/echo.o echo.cpp
+g++ -O3 -g3 -c -o obj/random.o random.cpp
+
 
 g++ -o bin/hello_world \
     obj/L0.o \
@@ -46,3 +48,18 @@ g++ -o bin/echo \
     obj/L1_security.o \
     obj/L1.o \
     obj/echo.o
+
+g++ -o bin/random \
+    obj/L0.o \
+    obj/L0_commodities.o \
+    obj/L0_communication.o \
+    obj/L0_provision.o \
+    obj/L0_base.o \
+    obj/sha256.o \
+    obj/aes256.o \
+    obj/pbkdf2.o \
+    obj/L1_base.o \
+    obj/L1_login_logout.o \
+    obj/L1_security.o \
+    obj/L1.o \
+    obj/random.o
