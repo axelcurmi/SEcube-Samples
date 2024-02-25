@@ -20,14 +20,14 @@ int main(void)
     if (!L0_discover_next(&it))
     {
         fprintf(stderr, "ERROR SECube not found.\n");
-        return 1;
+        return 0;
     }
 
     error_code = L0_open(&device, &it.device_info, 0);
     if (error_code != SE3_OK)
     {
         fprintf(stderr, "ERROR Failed to L0_open [%hd].\n", error_code);
-        return 1;
+        return 0;
     }
 
     error_code = L0_echo(&device, data_in, data_in_len, data_out);
@@ -40,10 +40,8 @@ int main(void)
     printf("DEBUG IN %s\n", data_in);
     printf("DEBUG OUT %s\n", data_out);
 
-return 0;
-
 cleanup_L0_close:
     printf("CLEANUP L0_close\n");
     L0_close(&device);
-    return 1;    
+    return 0;
 }

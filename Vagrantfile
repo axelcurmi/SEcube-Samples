@@ -21,4 +21,9 @@ Vagrant.configure("2") do |config|
       "--manufacturer", "SECube",
       "--product",      "SECube"]
   end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y build-essential
+  SHELL
 end
