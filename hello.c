@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <time.h>
+#include <string.h>
+#include <sys/random.h>
 
 #include "secube/L1.h"
 
@@ -24,8 +27,7 @@ int main(void)
 
     const uint8_t admin_pin[SE3_L1_PIN_SIZE] = {
         't', 'e', 's', 't', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     L0_discover_init(&it);
     if (L0_discover_next(&it))
@@ -84,14 +86,14 @@ int main(void)
     error_code = L1_key_list(&session, 0, 10, keys, &count);
     if (error_code != SE3_OK)
     {
-            fprintf(stderr, "ERROR Failed to L1_key_list [%hd].\n", error_code);
-            goto cleanup_L1_logout;
+        fprintf(stderr, "ERROR Failed to L1_key_list [%hd].\n", error_code);
+        goto cleanup_L1_logout;
     }
 
     printf("DEBUG count=%hd\n", count);
     for (int i = 0; i < count; i++)
     {
-            printf("DEBUG (%d) %s\n", keys[i].id, keys[i].name);
+        printf("DEBUG (%d) %s\n", keys[i].id, keys[i].name);
     }
 
     if (count == 1)
@@ -115,6 +117,11 @@ int main(void)
         se3_key key;
 
         memset(data, 0, 32);
+        if (getrandom(data, 32, 0) != 32)
+        {
+            fprintf(stderr, "ERROR Failed to generate random key data.\n");
+            goto cleanup_L1_logout;
+        }
 
         key.id = 0;
         key.data = data;
