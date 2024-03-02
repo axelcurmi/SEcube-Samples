@@ -8,4 +8,6 @@ find . -name "*.c" -exec bash -c 'name=$(basename $1); gcc -c -g -O0 -D_GNU_SOUR
 
 gcc -o bin/hello $secube_objects obj/hello.o
 gcc -o bin/echo $secube_objects obj/echo.o
+gcc -o bin/random $secube_objects obj/random.o
+
 

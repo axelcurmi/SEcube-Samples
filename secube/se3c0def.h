@@ -55,7 +55,9 @@ enum {
 enum {
     SE3_CMD0_FACTORY_INIT = 1,
     SE3_CMD0_ECHO = 2,
-    SE3_CMD0_L1 = 3
+    SE3_CMD0_L1 = 3,
+
+    SE3_CMD0_RAND = 5
 };
 
 /** L0 command flags */

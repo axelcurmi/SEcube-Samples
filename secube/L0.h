@@ -89,6 +89,16 @@ uint16_t L0_TXRX(se3_device* device, uint16_t req_cmd, uint16_t req_cmdflags, ui
 uint16_t L0_echo(se3_device* device, const uint8_t* data_in, uint16_t data_in_len, uint8_t* data_out);
 
 /**
+ * \brief Hardware randomness service
+ * 
+ * \param [in] device pointer to SEcube device structure
+ * \param [in] size in bytes of amount of random bytes to generate
+ * \param [out] data_out_len number of bytes generated
+ * \param [out] data_out buffer to store randomly generate bytes
+*/
+uint16_t L0_rand(se3_device* device, uint16_t size, uint16_t* data_out_len, uint8_t* data_out);
+
+/**
  *  \brief Initialise SEcube device
  *  
  *  \param [in] device pointer to SEcube device structure
