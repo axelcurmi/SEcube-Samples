@@ -272,7 +272,6 @@ uint16_t L0_rand(se3_device* device, uint16_t size, uint16_t* data_out_len, uint
     uint16_t resp_status = 0;
 	uint16_t error = 0;
 
-	printf("%p = %d\n", data_out_len, *data_out_len);
 	error = L0_TXRX(device, SE3_CMD0_RAND, 0, sizeof(size), (uint8_t *)&size, &resp_status, data_out_len, data_out);
 	if (error != SE3_OK)
 		return(error);

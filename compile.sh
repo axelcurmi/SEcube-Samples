@@ -10,3 +10,4 @@ gcc -o bin/hello $secube_objects obj/hello.o
 gcc -o bin/echo $secube_objects obj/echo.o
 gcc -o bin/random $secube_objects obj/random.o
 gcc -o bin/random2file $secube_objects obj/random2file.o
+gcc -o bin/keys $secube_objects obj/keys.o
